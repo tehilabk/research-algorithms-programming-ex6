@@ -1,17 +1,37 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import fsolve
 
-def plotIntersection(points, f, g):
+from task_6.q1 import plotIntersection
 
-    # plot the graph
-    plt.plot(points, f(points), points, g(points))
+if __name__ == '__main__':
 
-    # descover the point and plot them
-    for point in points:
-        [p, data, target, error] = fsolve(lambda x: f(x) - g(x), x0=point, full_output=True)
-        if target and p <= max(points):
-            plt.plot(p, f(p), 'ro')
+    points = np.linspace(-10, 10, 1000)
+    f = lambda x: x ** 2
+    g = lambda x: x + 10
 
-    #show the graph
-    plt.show()
+    plotIntersection(points, f, g)
+
+    points = np.linspace(-10, 10, 1000)
+    f = lambda x: np.sin(x)
+    g = lambda x: 0.2 * x
+
+    plotIntersection(points, f, g)
+
+
+    points = np.linspace(-10, 10, 1000)
+    f = lambda x: x + x
+    g = lambda x: x - x
+
+    plotIntersection(points, f, g)
+
+
+    points = np.linspace(-10, 10, 1000)
+    f = lambda x: x ** 2
+    g = lambda x: x - 2
+
+    plotIntersection(points, f, g)
+
+
+    points = np.linspace(-10, 10, 1000)
+    f = lambda x : np.sin(x)
+    g = lambda x : np.cos(x)
+    plotIntersection(points, f, g)
